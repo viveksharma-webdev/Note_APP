@@ -1,7 +1,6 @@
 import LeftPanel from '../Components/LeftPanel.jsx';
 import FloatingMenu from '../Components/FloatingMenu.jsx'
 import {useState, useEffect} from 'react';
-//import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 

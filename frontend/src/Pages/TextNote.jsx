@@ -4,9 +4,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const TextNote = () => {
-  const [title, setTitle] = useState("");        // State for title
-  const [content, setContent] = useState("");    // State for content
-  const [image, setImage] = useState(null);      // State for image (file)
+  const [title, setTitle] = useState("");       
+  const [content, setContent] = useState("");    
+  const [image, setImage] = useState(null);      
   const navigate = useNavigate();
 
   // Handle form submission
@@ -16,21 +16,21 @@ const TextNote = () => {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", content);
-    if (image) formData.append("image", image);  // Add image if selected
+    if (image) formData.append("image", image);  
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/create/notes", // Update this to your API endpoint
+        "http://localhost:5000/api/create/notes", 
         formData,
         {
-          withCredentials: true,  // Include credentials (cookies with token)
+          withCredentials: true,  
           headers: {
-            "Content-Type": "multipart/form-data", // Important for file upload
+            "Content-Type": "multipart/form-data", 
           },
         }
       );
       console.log("Note Created:", response.data);
-      navigate("/home"); // Navigate after successful note creation
+      navigate("/home"); 
     } catch (error) {
       console.log("Error while creating note:", error);
       alert("Failed to create note");
@@ -40,7 +40,7 @@ const TextNote = () => {
   // Handle file selection
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setImage(file);  // Set the selected file to the image state
+    setImage(file);  
   };
 
   return (
@@ -54,7 +54,7 @@ const TextNote = () => {
             name="title"
             placeholder="title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)} // Set title value to state
+            onChange={(e) => setTitle(e.target.value)} 
             className="rounded-full w-3/4 py-1 px-3 border-1 shadow-md"
           />
           <h2 className="text-2xl font-semibold mt-3">Content:</h2>
@@ -63,14 +63,14 @@ const TextNote = () => {
             name="content"
             placeholder="content"
             value={content}
-            onChange={(e) => setContent(e.target.value)} // Set content value to state
+            onChange={(e) => setContent(e.target.value)} 
             className="rounded-sm w-full h-[20vh] py-1 px-3 shadow-md"
           />
           <h2 className="text-2xl font-semibold mt-3">Image:</h2>
           <input
             type="file"
             name="image"
-            onChange={handleFileChange} // Handle file selection
+            onChange={handleFileChange} 
             className="rounded-sm w-1/2 py-1 px-3 border-1 underline shadow-md"
           />
           <button className="mt-5 rounded-full bg-green-500 text-white text-lg font-medium py-1 px-3">

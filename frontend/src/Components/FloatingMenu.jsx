@@ -9,13 +9,12 @@ const FloatingMenu = () => {
 
   // Function to handle navigation
   const navigateTo = (path) => {
-    // Navigate to the desired route (React Router will handle the route)
     navigate(path);
   };
 
   return (
     <div className="relative flex flex-col items-center">
-      {/* Links (Hidden Initially) */}
+ 
       {isOpen && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -38,7 +37,7 @@ const FloatingMenu = () => {
         </motion.div>
       )}
 
-      {/* Plus Button */}
+  
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="p-3 bg-red-500 text-white rounded-full shadow-md hover:bg-red-600 transition-all"

@@ -2,7 +2,9 @@ const jwt = require('jsonwebtoken');
 const userModel = require('../models/userModel.js');
 require('dotenv').config();
 const verifyToken = async (req, res, next) => {
-  console.log(req.cookies);
+  if(!req.cookies.token){
+    return res.status(401).send("Unauthenticated");
+  }
   try {
     const token = req.cookies.token;
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);

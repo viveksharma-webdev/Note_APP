@@ -49,9 +49,9 @@ const AudioNote = () => {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("content", text);
-    formData.append("isFavorite", false); // Default value
+    formData.append("isFavorite", false); 
     if (image) {
-      formData.append("image", image); // Only append image if selected
+      formData.append("image", image); 
     }
 
     try {
@@ -62,7 +62,7 @@ const AudioNote = () => {
 
       console.log("Note Created:", response.data);
       alert("Note created successfully!");
-      navigate("/"); // Redirect after submission
+      navigate("/home"); // Redirect after submission
     } catch (error) {
       console.error("Error creating note:", error);
       alert("Failed to create note. Check console for details.");
